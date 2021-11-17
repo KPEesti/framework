@@ -21,7 +21,6 @@ class HelloWorldController
 
     }
 
-
     /**
      * World action
      * @return Response
@@ -33,7 +32,6 @@ class HelloWorldController
             'text' => 'world'
         ]));
     }
-
 
     protected function render($templateName, $vars = [])
     {
@@ -50,6 +48,4 @@ class HelloWorldController
         return new Response('Sorry but this action not found',
             '404', 'Not found');
     }
-
-
 }

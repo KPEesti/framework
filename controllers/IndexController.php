@@ -33,7 +33,7 @@ class IndexController
     {
         $id = $request->getQueryParameter("id");
 
-        $article = is_int($id) ? $this->articleRepository->getById($id) : null;
+        $article = is_numeric($id) ? $this->articleRepository->getById($id) : null;
 
         if ($article === null) {
             return new Response('Page not found', '404', 'Not found');

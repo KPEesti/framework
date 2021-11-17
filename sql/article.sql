@@ -6,3 +6,4 @@ CREATE TABLE  IF NOT EXISTS articles (
 
 INSERT INTO articles (name, body) VALUES ('Hello', 'Hello world long long page...');
 INSERT INTO articles (name, body) VALUES ('World', 'World hello extra long long page...');
+insert into articles (name) values ('Agents');

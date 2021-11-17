@@ -17,4 +17,8 @@ $routes = [
         'controller' => 'helloWorld',
         'action' => 'world'
     ],
+    '/agents' => [
+        'controller' => 'Agents',
+        'action' => 'agents'
+    ]
 ];

@@ -41,7 +41,4 @@ class Router
 
         return $this->routes[$path];
     }
-
-
-
 }
