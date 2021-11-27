@@ -1,7 +1,53 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: black;
+    display: flex;
+
+}
+
+main{
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    margin: auto;
+}
+
 table{
     border-collapse: collapse;
+    width: 100%;
 }
 
 th, td{
+    padding: 10px;
     border: 1px solid black;
+}
+
+a{
+    text-decoration: none;
+}
+
+input{
+    margin: 20px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.add_button,
+.back-button{
+    padding: 20px;
+    font-size: 20px;
+}
+
+.nav-item{
+    padding: 20px;
+    font-size: 20px;
+    color: darkorange;
 }

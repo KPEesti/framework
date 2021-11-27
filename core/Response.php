@@ -41,6 +41,10 @@ class Response
     {
         header(sprintf('HTTP/1.1 %s %s', $this->httpStatusCode, $this->httpStatusText));
         header(sprintf('Content-type: %s', $this->contentType));
+
+        if ($this->httpStatusCode === '301'){
+
+        }
     }
 
     protected function sendContent()

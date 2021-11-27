@@ -17,8 +17,12 @@ $routes = [
         'controller' => 'helloWorld',
         'action' => 'world'
     ],
-    '/agents' => [
+    '/agents_Contracts' => [
         'controller' => 'Agents',
         'action' => 'agents'
+    ],
+    '/agents_Contracts/create' => [
+        'controller' => 'Agents',
+        'action' => 'createForm'
     ]
 ];

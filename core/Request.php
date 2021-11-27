@@ -105,5 +105,10 @@ class Request
         return isset($this->originalGet[$name]) ? $this->originalGet[$name] : null;
     }
 
+    public function getRequestParameter($name)
+    {
+        return isset($this->originalPost[$name]) ? $this->originalGet[$name] : null;
+    }
+
 
 }

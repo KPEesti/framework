@@ -11,11 +11,22 @@ class AgentsController
         $this->agContractsRepository = $agContractsRepository;
     }
 
-    public function agentsAction(){
+    public function agentsAction(Request $request)
+    {
         $agents = $this->agContractsRepository->getAllAgContracts();
-        return new Response($this->render('agents', [
+        return new Response($this->render('/AgentsContracts/agents', [
             'Contracts_Agent' => $agents
         ]));
+    }
+
+    public function createFormAction(Request $request)
+    {
+        return new Response($this->render('AgentsContracts/creation_agents'));
+    }
+
+    public function createAction()
+    {
+
     }
 
     protected function render($templateName, $vars = [])

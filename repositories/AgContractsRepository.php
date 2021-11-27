@@ -35,4 +35,9 @@ class AgContractsRepository
         $statment = $this->connection->query("select * from apartment_Contracts");
         return $statment->fetchAll();
     }
+
+    public function add()
+    {
+
+    }
 }
