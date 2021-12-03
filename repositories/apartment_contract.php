@@ -2,18 +2,16 @@
 
 class apartment_contract
 {
-    public $id;
-    public $cost;
-    public $Apartment_Num;
-    public $Res_Complex;
-    public $status;
+    public $Apart_ID;
+    public $Apart_Cost;
+    public $Apart_Num;
+    public $ResComplex;
 
-    public function __construct($id, $cost, $Apartment_Num, $Res_Complex, $status)
+    public function __construct($id, $cost, $Apartment_Num, $Res_Complex)
     {
-        $this->id = $id;
-        $this->cost = $cost;
-        $this->Apartment_Num = $Apartment_Num;
-        $this->Res_Complex = $Res_Complex;
-        $this->status = $status;
+        $this->Apart_ID = $id;
+        $this->Apart_Cost = $cost;
+        $this->Apart_Num = $Apartment_Num;
+        $this->ResComplex = $Res_Complex;
     }
 }

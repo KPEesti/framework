@@ -3,28 +3,31 @@
 class agent_contract
 {
     public int $id;
+    public string $agent;
     public int $apart_id;
-    public int $agent_id;
+    public string $award_type;
+    public ?int $fix_award;
+    public ?float $percent_award;
     public DateTime $conclusion_date;
     public DateTime $expiration_date;
-    public bool $comm_type;
-    public int $comm_amt;
 
     public function __construct(
         $id,
+        $agent,
         $apart_id,
-        $agent_id,
+        $award_type,
+        $fix_award,
+        $percent_award,
         $conclusion_date,
-        $expiration_date,
-        $comm_type,
-        $comm_amt)
+        $expiration_date)
     {
         $this->id = $id;
+        $this->agent = $agent;
         $this->apart_id = $apart_id;
-        $this->agent_id = $agent_id;
+        $this->award_type = $award_type;
+        $this->fix_award = $fix_award;
+        $this->percent_award = $percent_award;
         $this->conclusion_date = $conclusion_date;
         $this->expiration_date = $expiration_date;
-        $this->comm_type = $comm_type;
-        $this->comm_amt = $comm_amt;
     }
 }

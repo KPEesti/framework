@@ -1,6 +1,7 @@
+
 <?php
 
-class HelloWorldController
+class HelloWorldController extends BaseController
 {
     /**
      * Action name
@@ -21,6 +22,7 @@ class HelloWorldController
 
     }
 
+
     /**
      * World action
      * @return Response
@@ -31,21 +33,5 @@ class HelloWorldController
             'title' => 'World page',
             'text' => 'world'
         ]));
-    }
-
-    protected function render($templateName, $vars = [])
-    {
-        ob_start();
-        extract($vars);
-        include sprintf('templates/%s.php', $templateName);
-        $content = ob_get_contents();
-        ob_end_clean();
-        return $content;
-    }
-
-    public function __call($name, $arguments)
-    {
-        return new Response('Sorry but this action not found',
-            '404', 'Not found');
     }
 }

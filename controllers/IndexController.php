@@ -1,6 +1,6 @@
 <?php
 
-class IndexController
+class IndexController extends BaseController
 {
     /**
      * Action name
@@ -18,12 +18,11 @@ class IndexController
         $this->articleRepository = $articleRepository;
     }
 
-
     public function indexAction(Request $request)
     {
         $articles = $this->articleRepository->getAll();
         return new Response(
-            $this->render('articles', [
+            $this->render('article/articles', [
                 'articles' => $articles
             ])
         );
@@ -40,27 +39,43 @@ class IndexController
         }
 
         return new Response(
-            $this->render('article', [
+            $this->render('article/article', [
                 'article' => $article
             ])
         );
     }
 
-    protected function render($templateName, $vars = [])
+    /**
+     * Show form far article create.
+     * @param Request $request
+     * @return Response
+     */
+    public function createFormAction(Request $request)
     {
-        ob_start();
-        extract($vars);
-        include sprintf('templates/%s.php', $templateName);
-        $content = ob_get_contents();
-        ob_end_clean();
-        return $content;
+        return new Response (
+            $this->render('article/form', [])
+        );
+
     }
 
-    public function __call($name, $arguments)
+    /**
+     * Add new article
+     * @param Request $request
+     * @return Response|void
+     */
+    public function createAction(Request $request)
     {
-        return new Response('Sorry but this action not found',
-            '404', 'Not found');
+        if ($request->isPost() && !empty($request->getRequestParameter('article'))) {
+
+            $article = $request->getRequestParameter('article');
+
+            $this->articleRepository->add($article['name'], $article['body']);
+
+            return new Response(
+                '/', '301', 'Moved'
+            );
+
+        }
+
     }
-
-
 }

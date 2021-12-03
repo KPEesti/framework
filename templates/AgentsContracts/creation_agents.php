@@ -16,45 +16,39 @@
     <header>
         <a href="/" class="nav-item">Главная</a>
         <a href="/agents_Contracts" class="nav-item">Агентские контракты</a>
+        <a href="/apartment_Contracts" class="nav-item">Квартиры</a>
     </header>
     <main>
         <p>Добавление контракта на агента</p>
-        <form action="/agents_Contracts" method="post" name="create-form">
-            <label for="article"></label>
-            <input type="text" id="article" placeholder="Номер Агента" name="article[Agent_Id]">
-            <input type="text" id="article" placeholder="Номер договра квартиры">
-            <input type="date" id="article" placeholder="Дата заключения договора">
-            <input type="date" id="article" placeholder="Дата окончания договора">
-            <p>Тип вознаграждения</p>
-            <select name="comm-type" id="article">
-                <option value="percent" onclick="togle1">Процентный</option>
-                <option value="money">Фиксированный</option>
+        <form action="/agents_Contracts/create" method="POST" name="create-form">
+            <label for="Agent">ФИО агента</label>
+            <input type="text" name="contract[Agent]" placeholder="Иванов Иван Иванович">
+
+            <label for="Apart_ID">Номер договора на квартиру</label>
+            <input type="text" name="contract[Apart_ID]" placeholder="1">
+
+            <label for="Award_Type">Тип вознаграждения</label>
+            <select name="contract[Award_Type]" id="">
+                <option value="FIX">Фиксированный</option>
+                <option value="PERCENT">Процентный</option>
             </select>
-            <div>
-                <p>Выплата в денежном эквиваленте</p>
-                <input id="article" type="text" placeholder="Сумма выплаты">
-            </div>
-            <div>
-                <p>Выплата в процентах</p>
-                <input id="article" type="text" placeholder="Процент">
-            </div>
-            <div>
-                <input id="article" type="submit" value="Добавить">
-                <input id="article" type="reset" value="Сбросить">
-            </div>
+
+            <label for="FIX_AWARD">Фиксированная награда</label>
+            <input type="text" name="contract[FIX_AWARD]">
+
+            <label for="PERCENT_AWARD">Процентная награда</label>
+            <input type="text" name="contract[PERCENT_AWARD]">
+
+            <label for="Conclusion_Date">Дата заключения договора</label>
+            <input type="text" name="contract[Conclusion_Date]">
+
+            <label for="Expiration_Date">Дата окончания договора</label>
+            <input type="text" name="contract[Expiration_Date]">
+
+            <input type="submit" value="Добавить">
         </form>
-        <script>
-            var comm = create-form.comm-type.options[0]
-            if (create-form.comm-type.options[0])
-        </script>
 
         <div class="back-button"><a href="/agents_Contracts">Вернуться к списку контрактов</a></div>
     </main>
 </body>
-
-<script>
-    function switchComm(element){
-        
-    }
-</script>
 </html>

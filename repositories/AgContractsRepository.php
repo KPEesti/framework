@@ -17,27 +17,35 @@ class AgContractsRepository
         $statment = $this->connection->query("select * from agents_Contracts");
         $arr = $statment->fetchAll();
         foreach ($arr as $value):
-            array_push($this->agents,
-                new agent_contract(
-                    $value['Contract_Id'],
-                    $value['Agent_Id'],
-                    $value['Apart_Id'],
-                    new DateTime($value['Conclusion_Date']),
-                    new DateTime($value['Expiration_Date']),
-                    $value['Comm_Type'],
-                    $value['Comm_AMT']));
+            $this->agents[] = new agent_contract(
+                $value['Contract_ID'],
+                $value['Agent'],
+                $value['Apart_ID'],
+                $value['Award_Type'],
+                $value['FIX_AWARD'],
+                $value['PERCENT_AWARD'],
+                new DateTime($value['Conclusion_Date']),
+                new DateTime($value['Expiration_Date'])
+            );
         endforeach;
         return $this->agents;
     }
 
-    public function getAllApartContracts()
+    public function add($contract)
     {
-        $statment = $this->connection->query("select * from apartment_Contracts");
-        return $statment->fetchAll();
-    }
-
-    public function add()
-    {
-
+        $this->connection->prepare("insert into agents_Contracts 
+                (Agent, Apart_ID, Award_Type, FIX_AWARD, PERCENT_AWARD, Conclusion_Date, Expiration_Date)
+                values (?, ?, ?, ?, ?, ?, ?)")
+            ->execute(
+                [
+                    $contract[Agent],
+                    $contract[Apart_ID],
+                    $contract[Award_Type],
+                    ($contract[Award_Type] === 'FIX') ? $contract[FIX_AWARD] : null,
+                    ($contract[Award_Type] === 'PERCENT') ? $contract[PERCENT_AWARD] : null,
+                    date($contract[Conclusion_Date]),
+                    date($contract[Expiration_Date])
+                ]
+            );
     }
 }

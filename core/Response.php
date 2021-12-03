@@ -43,7 +43,7 @@ class Response
         header(sprintf('Content-type: %s', $this->contentType));
 
         if ($this->httpStatusCode === '301'){
-
+            header(sprintf('Location: %s', $this->content));
         }
     }
 
