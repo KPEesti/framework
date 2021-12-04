@@ -28,16 +28,20 @@
             <input type="text" name="contract[Apart_ID]" placeholder="1">
 
             <label for="Award_Type">Тип вознаграждения</label>
-            <select name="contract[Award_Type]" id="">
-                <option value="FIX">Фиксированный</option>
+            <select name="contract[Award_Type]" id="Award_Type" onchange="changeAwardType()">
+                <option selected value="FIX">Фиксированный</option>
                 <option value="PERCENT">Процентный</option>
             </select>
 
-            <label for="FIX_AWARD">Фиксированная награда</label>
-            <input type="text" name="contract[FIX_AWARD]">
+            <div class="fix" id="FIX">
+                <label for="FIX_AWARD">Фиксированная награда</label><br>
+                <input type="text" name="contract[FIX_AWARD]">
+            </div>
 
-            <label for="PERCENT_AWARD">Процентная награда</label>
-            <input type="text" name="contract[PERCENT_AWARD]">
+            <div class="percent" id="PERCENT">
+                <label for="PERCENT_AWARD">Процентная награда</label><br>
+                <input type="text" name="contract[PERCENT_AWARD]">
+            </div>
 
             <label for="Conclusion_Date">Дата заключения договора</label>
             <input type="text" name="contract[Conclusion_Date]">
@@ -50,5 +54,23 @@
 
         <div class="back-button"><a href="/agents_Contracts">Вернуться к списку контрактов</a></div>
     </main>
+
+
+    <script>
+        function changeAwardType(){
+            let s = document.getElementById('Award_Type');
+
+            let f = document.getElementById('FIX')
+            let p = document.getElementById('PERCENT')
+
+            if (s.options.selectedIndex === 0) {
+                f.classList.add('selected')
+                p.classList.remove('selected')
+            } else {
+                p.classList.add('selected')
+                f.classList.remove('selected')
+            }
+        }
+    </script>
 </body>
 </html>

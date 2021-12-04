@@ -29,7 +29,7 @@ a{
     text-decoration: none;
 }
 
-input{
+input, select{
     margin: 20px;
 }
 
@@ -37,6 +37,14 @@ form{
     display: flex;
     flex-direction: column;
     width: 500px;
+}
+
+.fix, .percent{
+    display: none;
+}
+
+.selected{
+    display: block;
 }
 
 .add_button,
