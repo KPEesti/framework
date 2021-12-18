@@ -50,7 +50,7 @@ class IndexController extends BaseController
      * @param Request $request
      * @return Response
      */
-    public function createFormAction(Request $request)
+    public function createFormAction(Request $request): Response
     {
         return new Response (
             $this->render('article/form', [])
@@ -68,14 +68,20 @@ class IndexController extends BaseController
         if ($request->isPost() && !empty($request->getRequestParameter('article'))) {
 
             $article = $request->getRequestParameter('article');
+            $articleValidator = new ArticleValidator();
+            $errors = $articleValidator->validate($article);
 
-            $this->articleRepository->add($article['name'], $article['body']);
+            if(empty($errors)){
+                $this->articleRepository->add($article['name'], $article['body']);
 
-            return new Response(
-                '/', '301', 'Moved'
-            );
-
+                return new Response(
+                    '/', '301', 'Moved'
+                );
+            } else{
+                return new Response (
+                    $this->render('article/form', ['errors' => $errors])
+                );
+            }
         }
-
     }
 }

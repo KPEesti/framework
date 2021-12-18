@@ -1,13 +1,10 @@
 <html>
 <head>
+    <title>Главная</title>
     <link rel="stylesheet" href="templates/styles/style.css">
 </head>
 <body>
-<header>
-    <a href="/" class="nav-item">Главная</a>
-    <a href="/agents_Contracts" class="nav-item">Агентские контракты</a>
-    <a href="/apartment_Contracts" class="nav-item">Квартиры</a>
-</header>
+<?php include "templates/headerTemplate.php" ?>
 <main>
     <table>
         <tr>

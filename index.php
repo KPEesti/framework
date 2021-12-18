@@ -5,6 +5,10 @@ require_once 'core/Response.php';
 require_once 'core/Router.php';
 require_once 'core/BaseController.php';
 
+require_once 'validators/ArticleValidator.php';
+require_once 'validators/ApartmentValidator.php';
+require_once 'validators/AgentsValidator.php';
+
 require_once 'repositories/ArticleRepository.php';
 require_once 'repositories/AgContractsRepository.php';
 require_once 'repositories/ApartmentRepository.php';

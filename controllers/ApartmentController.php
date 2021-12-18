@@ -28,11 +28,21 @@ class ApartmentController extends BaseController
     {
         if ($request->isPost() && !empty($request->getRequestParameter('apartment'))) {
 
-            $this->apartmentRepository->add($request->getRequestParameter('apartment'));
+            $apartment = $request->getRequestParameter('apartment');
+            $apartmentValidator = new ApartmentValidator();
+            $errors = $apartmentValidator->validate($apartment);
 
-            return new Response(
-                '/apartment_Contracts', '301', 'Moved'
-            );
+            if(empty($errors)){
+                $this->apartmentRepository->add($request->getRequestParameter('apartment'));
+
+                return new Response(
+                    '/apartment_Contracts', '301', 'Moved'
+                );
+            } else {
+                return new Response(
+                    $this->render('ApartmentTmp/creation_apartment', ['errors' => $errors])
+                );
+            }
         }
     }
 }

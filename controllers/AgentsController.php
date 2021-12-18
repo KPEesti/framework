@@ -28,11 +28,21 @@ class AgentsController extends BaseController
     {
         if ($request->isPost() && !empty($request->getRequestParameter('contract'))) {
 
-            $this->agContractsRepository->add($request->getRequestParameter('contract'));
+            $contract = $request->getRequestParameter('contract');
+            $agentsValidator = new AgentsValidator();
+            $errors = $agentsValidator->validate($contract);
 
-            return new Response(
-                '/agents_Contracts', '301', 'Moved'
-            );
+            if(empty($errors)){
+                $this->agContractsRepository->add($contract);
+
+                return new Response(
+                    '/agents_Contracts', '301', 'Moved'
+                );
+            } else {
+                return new Response(
+                    $this->render('AgentsContracts/creation_agents', ['errors' => $errors])
+                );
+            }
         }
     }
 }
