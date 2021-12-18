@@ -21,7 +21,9 @@
                     <input type="submit" formaction="/agents_Contracts" value="Очистить филтьтр">
                 </div>
             </form>
-
+            <?php if(empty($Contracts_Agent)): ?>
+                <span>Для данного агента нет зарегистрированных контрактов</span>
+            <?php else: ?>
             <table>
                 <tr>
                     <th>ID Договора</th>
@@ -44,6 +46,7 @@
                     </tr>
                 <?php endforeach; ?>
             </table>
+            <?php endif; ?>
         </div>
 
         <div class="add_button"><a href="/agents_Contracts/create_form">Добавит контракт</a></div>

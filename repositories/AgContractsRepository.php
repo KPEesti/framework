@@ -39,8 +39,7 @@ class AgContractsRepository
 
     public function getAgentsContractByName($Agent)
     {
-        var_dump($Agent);
-        $statement = $this->connection->query("select * from agents_apartment where Agent = '{$Agent}'");
+        $statement = $this->connection->query("select * from agents_apartment where Agent = '$Agent'");
         $this->setAgContracts($statement);
         return $this->agents;
     }
