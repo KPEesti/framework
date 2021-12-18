@@ -40,4 +40,25 @@ class ApartmentRepository
               ]
             );
     }
+
+    public function getApartmentByID($Apart_ID){
+        $Apart_ID = (int)$Apart_ID;
+
+        $statement = $this->connection->query("select * from apartment where Apart_ID = $Apart_ID");
+        $this->setApartments($statement);
+        return $this->apartments;
+    }
+
+    protected function setApartments($statement)
+    {
+        $arr = $statement->fetchAll();
+        foreach ($arr as $value):
+            $this->apartments[] = new apartment_contract(
+                $value['Apart_ID'],
+                $value['Apart_Cost'],
+                $value['Apart_Num'],
+                $value['ResComplex']
+            );
+        endforeach;
+    }
 }

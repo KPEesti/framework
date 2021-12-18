@@ -25,6 +25,7 @@ $routes = [
         'controller' => 'index',
         'action' => 'create'
         ],
+
     '/agents_Contracts' => [
         'controller' => 'Agents',
         'action' => 'agents'
@@ -43,11 +44,15 @@ $routes = [
         'action' => 'apartment'
     ],
     '/apartment_Contracts/create_form' => [
-    'controller' => 'Apartment',
-    'action' => 'createForm'
+        'controller' => 'Apartment',
+        'action' => 'createForm'
     ],
     '/apartment_Contracts/create' => [
-    'controller' => 'Apartment',
-    'action' => 'create'
+        'controller' => 'Apartment',
+        'action' => 'create'
+    ],
+    '/apartment_Contracts/findByID' => [
+        'controller' => 'Apartment',
+        'action' => 'FindByID'
     ]
 ];

@@ -14,6 +14,12 @@
     <div>
         <h1>Список Квартир</h1>
 
+        <form action="/apartment_Contracts/findByID" method="POST">
+            <label for="Apart_ID">Поиск квартиры по ID</label>
+            <input type="text" placeholder="ID квартиры" name="Apart_ID">
+            <input type="submit" value="найти">
+        </form>
+
         <table>
             <tr>
                 <th>ID Квартиры</th>

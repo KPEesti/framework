@@ -45,4 +45,13 @@ class ApartmentController extends BaseController
             }
         }
     }
+
+    public function FindByIDAction($request)
+    {
+        $apartment_ID = $request->getRequestParameter('Apart_ID');
+        $apartments = $this->apartmentRepository->getApartmentByID($apartment_ID);
+        return new Response($this->render('/ApartmentTmp/apartments', [
+            'Apartments' => $apartments
+        ]));
+    }
 }
