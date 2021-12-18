@@ -19,8 +19,7 @@
                     <th>Агент</th>
                     <th>ID Квартиры</th>
                     <th>Тип вознаграждения</th>
-                    <th>Фиксированное вознаграждение</th>
-                    <th>Процентное вознаграждение</th>
+                    <th>Размер вознаграждения</th>
                     <th>Дата заключения договора</th>
                     <th>Дата окончания договора</th>
                 </tr>
@@ -30,8 +29,7 @@
                         <td><?=$contract->agent ?></td>
                         <td><?=$contract->apart_id ?></td>
                         <td><?=$contract->award_type ?></td>
-                        <td><?=$contract->fix_award ?></td>
-                        <td><?=$contract->percent_award ?></td>
+                        <td><?=$contract->award ?></td>
                         <td><?=$contract->conclusion_date->format('Y-m-d')?></td>
                         <td><?=$contract->expiration_date->format('Y-m-d')?></td>
                     </tr>

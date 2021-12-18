@@ -14,7 +14,7 @@ class AgContractsRepository
 
     public function getAllAgContracts()
     {
-        $statment = $this->connection->query("select * from agents_Contracts");
+        $statment = $this->connection->query("select * from agents_apartment");
         $arr = $statment->fetchAll();
         foreach ($arr as $value):
             $this->agents[] = new agent_contract(
@@ -25,7 +25,8 @@ class AgContractsRepository
                 $value['FIX_AWARD'],
                 $value['PERCENT_AWARD'],
                 new DateTime($value['Conclusion_Date']),
-                new DateTime($value['Expiration_Date'])
+                new DateTime($value['Expiration_Date']),
+                $value['Apart_Cost']
             );
         endforeach;
         return $this->agents;

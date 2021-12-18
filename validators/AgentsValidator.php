@@ -72,31 +72,24 @@ class AgentsValidator
         }
 
         $MaxAgentLength = strlen($data['Agent']) > $this->rules['Agent']['size']['value'];
-        $minValueFix = (int)$data['FIX_AWARD'] <= $this->rules['FIX_AWARD']['min_size']['value'];
-        $maxValueFix = (int)$data['FIX_AWARD'] >= $this->rules['FIX_AWARD']['max_size']['value'];
-        $minValuePercent = (int)$data['PERCENT_AWARD'] <= $this->rules['PERCENT_AWARD']['min_size']['value'];
-        $maxValuePercent = (int)$data['PERCENT_AWARD'] >= $this->rules['PERCENT_AWARD']['max_size']['value'];
+        $minValueFix = (int)$data['FIX_AWARD'] < $this->rules['FIX_AWARD']['min_size']['value'];
+        $maxValueFix = (int)$data['FIX_AWARD'] > $this->rules['FIX_AWARD']['max_size']['value'];
+        $minValuePercent = (int)$data['PERCENT_AWARD'] < $this->rules['PERCENT_AWARD']['min_size']['value'];
+        $maxValuePercent = (int)$data['PERCENT_AWARD'] > $this->rules['PERCENT_AWARD']['max_size']['value'];
 
         if (!isset($errors['Agent']) && $MaxAgentLength){
             $errors['Agent'] = $this->rules['Agent']['size']['message'];
         }
 
-        if (!isset($errors['FIX_AWARD']))
-        {
-            if ($minValueFix){
-                $errors['FIX_AWARD'] = $this->rules['FIX_AWARD']['min_size']['message'];
-            } elseif ($maxValueFix) {
-                $errors['FIX_AWARD'] = $this->rules['FIX_AWARD']['max_size']['message'];
-            }
+        if ($minValueFix){
+            $errors['FIX_AWARD'] = $this->rules['FIX_AWARD']['min_size']['message'];
+        } elseif ($maxValueFix) {
+            $errors['FIX_AWARD'] = $this->rules['FIX_AWARD']['max_size']['message'];
         }
-
-        if (!isset($errors['PERCENT_AWARD']))
-        {
-            if ($minValuePercent){
-                $errors['PERCENT_AWARD'] = $this->rules['PERCENT_AWARD']['min_size']['message'];
-            } elseif ($maxValuePercent) {
-                $errors['PERCENT_AWARD'] = $this->rules['PERCENT_AWARD']['max_size']['message'];
-            }
+        if ($minValuePercent){
+            $errors['PERCENT_AWARD'] = $this->rules['PERCENT_AWARD']['min_size']['message'];
+        } elseif ($maxValuePercent) {
+            $errors['PERCENT_AWARD'] = $this->rules['PERCENT_AWARD']['max_size']['message'];
         }
 
         return $errors;

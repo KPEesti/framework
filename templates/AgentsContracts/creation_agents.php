@@ -40,7 +40,7 @@
                 <?php if(!empty($errors) && isset($errors['FIX_AWARD'])):?>
                     <span class="error-message"><?= $errors['FIX_AWARD']?></span><br>
                 <?php endif;?>
-                <input type="text" name="contract[FIX_AWARD]">
+                <input type="text" name="contract[FIX_AWARD]" value="0">
             </div>
 
             <div class="percent" id="PERCENT">
@@ -48,7 +48,7 @@
                 <?php if(!empty($errors) && isset($errors['PERCENT_AWARD'])):?>
                     <span class="error-message"><?= $errors['PERCENT_AWARD']?></span><br>
                 <?php endif;?>
-                <input type="text" name="contract[PERCENT_AWARD]">
+                <input type="text" name="contract[PERCENT_AWARD]" value="0">
             </div>
 
             <label for="Conclusion_Date">Дата заключения договора</label>
