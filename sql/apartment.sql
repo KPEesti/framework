@@ -4,7 +4,7 @@ drop table agents_Contracts;
 
 create table agents_Contracts(
                                  Contract_ID int not null primary key auto_increment,
-                                 Agent varchar(255) not null,
+                                 Agent nvarchar(255) not null,
                                  Apart_ID int not null unique ,
                                  Award_Type varchar(255) not null check (Award_Type in ('FIX', 'PERCENT')),
                                  FIX_AWARD int check (FIX_AWARD >= 0 and FIX_AWARD <= 1000000),
@@ -20,7 +20,11 @@ insert into agents_Contracts (Agent, Apart_ID, Award_Type, FIX_AWARD, PERCENT_AW
 VALUES
     ('Петров Пётр Петрович', 1, 'FIX', 75000, null, '2021-11-10', '2022-11-10'),
     ('Иванов Иван Иванович', 2, 'PERCENT', null, 5.5, '2021-11-12', '2022-11-12'),
-    ('Григорьев Григорий Григорьевич', 3, 'FIX', 100000, null, '2021-11-15', '2022-11-15');
+    ('Григорьев Григорий Григорьевич', 3, 'FIX', 100000, null, '2021-11-15', '2022-11-15'),
+    ('Петров Пётр Петрович', 4, 'FIX', 10000, null, '2021-11-10', '2022-11-10'),
+    ('Иванов Иван Иванович', 5, 'PERCENT', null, 5, '2021-11-10', '2022-11-10'),
+    ('Иванов Иван Иванович', 6, 'FIX', 10000, null, '2021-11-10', '2022-11-10');
+
 
 /*Тестовый вариант для проверки связанности таблиц*/
 insert into agents_Contracts (Agent, Apart_ID, Award_Type, FIX_AWARD, PERCENT_AWARD, Conclusion_Date, Expiration_Date)

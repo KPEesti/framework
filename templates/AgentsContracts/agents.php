@@ -13,6 +13,15 @@
         <div>
             <h1>Список контрактов</h1>
 
+            <form action="/agents_Contracts/findByName" method="post">
+                <label for="name">Поиск квартиры по ID</label>
+                <input type="text" placeholder="ФИО агента" name="name">
+                <div class="buttons-block">
+                    <input type="submit" value="найти">
+                    <input type="submit" formaction="/agents_Contracts" value="Очистить филтьтр">
+                </div>
+            </form>
+
             <table>
                 <tr>
                     <th>ID Договора</th>

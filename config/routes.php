@@ -30,6 +30,10 @@ $routes = [
         'controller' => 'Agents',
         'action' => 'agents'
     ],
+    '/agents_Contracts/findByName' => [
+        'controller' => 'Agents',
+        'action' => 'FindByName'
+    ],
     '/agents_Contracts/create_form' => [
         'controller' => 'Agents',
         'action' => 'createForm'

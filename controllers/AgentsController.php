@@ -45,4 +45,13 @@ class AgentsController extends BaseController
             }
         }
     }
+
+    public function FindByNameAction($request)
+    {
+        $agent = $request->getRequestParameter('name');
+        $contracts = $this->agContractsRepository->getAgentsContractByName($agent);
+        return new Response($this->render('/AgentsContracts/agents', [
+            'Contracts_Agent' => $contracts
+        ]));
+    }
 }

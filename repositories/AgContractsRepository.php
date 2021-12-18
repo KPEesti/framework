@@ -14,21 +14,8 @@ class AgContractsRepository
 
     public function getAllAgContracts()
     {
-        $statment = $this->connection->query("select * from agents_apartment");
-        $arr = $statment->fetchAll();
-        foreach ($arr as $value):
-            $this->agents[] = new agent_contract(
-                $value['Contract_ID'],
-                $value['Agent'],
-                $value['Apart_ID'],
-                $value['Award_Type'],
-                $value['FIX_AWARD'],
-                $value['PERCENT_AWARD'],
-                new DateTime($value['Conclusion_Date']),
-                new DateTime($value['Expiration_Date']),
-                $value['Apart_Cost']
-            );
-        endforeach;
+        $statement = $this->connection->query("select * from agents_apartment");
+        $this->setAgContracts($statement);
         return $this->agents;
     }
 
@@ -48,5 +35,31 @@ class AgContractsRepository
                     date($contract[Expiration_Date])
                 ]
             );
+    }
+
+    public function getAgentsContractByName($Agent)
+    {
+        var_dump($Agent);
+        $statement = $this->connection->query("select * from agents_apartment where Agent = '{$Agent}'");
+        $this->setAgContracts($statement);
+        return $this->agents;
+    }
+
+    protected function setAgContracts($statement)
+    {
+        $arr = $statement->fetchAll();
+        foreach ($arr as $value):
+            $this->agents[] = new agent_contract(
+                $value['Contract_ID'],
+                $value['Agent'],
+                $value['Apart_ID'],
+                $value['Award_Type'],
+                $value['FIX_AWARD'],
+                $value['PERCENT_AWARD'],
+                new DateTime($value['Conclusion_Date']),
+                new DateTime($value['Expiration_Date']),
+                $value['Apart_Cost']
+            );
+        endforeach;
     }
 }
