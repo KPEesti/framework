@@ -17,7 +17,10 @@
         <form action="/apartment_Contracts/findByID" method="POST">
             <label for="Apart_ID">Поиск квартиры по ID</label>
             <input type="text" placeholder="ID квартиры" name="Apart_ID">
-            <input type="submit" value="найти">
+            <div class="buttons-block">
+                <input type="submit" value="найти">
+                <input type="submit" formaction="/apartment_Contracts" value="Очистить филтьтр">
+            </div>
         </form>
         <?php if(empty($Apartments)): ?>
             <span>Данная квартира не найдена</span>
