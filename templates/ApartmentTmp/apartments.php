@@ -19,7 +19,9 @@
             <input type="text" placeholder="ID квартиры" name="Apart_ID">
             <input type="submit" value="найти">
         </form>
-
+        <?php if(empty($Apartments)): ?>
+            <span>Данная квартира не найдена</span>
+        <?php else: ?>
         <table>
             <tr>
                 <th>ID Квартиры</th>
@@ -36,6 +38,7 @@
                 </tr>
             <?php endforeach; ?>
         </table>
+        <?php endif; ?>
     </div>
 
     <div class="add_button"><a href="/apartment_Contracts/create_form">Добавит контракт</a></div>
