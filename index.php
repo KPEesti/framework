@@ -10,7 +10,7 @@ require_once 'validators/ApartmentValidator.php';
 require_once 'validators/AgentsValidator.php';
 
 require_once 'repositories/ArticleRepository.php';
-require_once 'repositories/AgContractsRepository.php';
+require_once 'repositories/AgentRepository.php';
 require_once 'repositories/ApartmentRepository.php';
 
 require_once 'controllers/IndexController.php';
@@ -34,7 +34,7 @@ $connection = new PDO( $dsn, $database['username'], $database['password'], [
 ]);
 
 $articleRepository = new ArticleRepository($connection);
-$agentsContRepository = new AgContractsRepository($connection);
+$agentsContRepository = new AgentRepository($connection);
 $apartmentRepository = new ApartmentRepository($connection);
 
 

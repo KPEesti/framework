@@ -14,7 +14,7 @@
             <h1>Список контрактов</h1>
 
             <form action="/agents_Contracts/findByName" method="post">
-                <label for="name">Поиск квартиры по ID</label>
+                <label for="name">Найти все контракты агента по его ФИО</label>
                 <input type="text" placeholder="ФИО агента" name="name">
                 <div class="buttons-block">
                     <input type="submit" value="найти">
@@ -24,6 +24,7 @@
             <?php if(empty($Contracts_Agent)): ?>
                 <span>Для данного агента нет зарегистрированных контрактов</span>
             <?php else: ?>
+                <h2><?php if (isset($Pay_Sum)):echo "Общая сумма выплат: $Pay_Sum"; endif; ?></h2>
             <table>
                 <tr>
                     <th>ID Договора</th>

@@ -1,6 +1,34 @@
-#region agents_Contracts
-
 drop table agents_Contracts;
+drop table apartment;
+drop view agents_apartment;
+
+#region apartment
+
+create table apartment(
+                          Apart_ID int primary key not null auto_increment,
+                          Apart_Cost int not null,
+                          Apart_Num int not null,
+                          ResComplex varchar(255) not null
+) ENGINE=InnoDB;
+
+insert into apartment (Apart_Cost, Apart_Num, ResComplex)
+values
+    (10000000, 134, 'Зелёная роща'),
+    (5000000, 123, 'Зелёная роща'),
+    (4000000, 19, 'Янтарный берег'),
+    (1000000, 20, 'Янтарный берег'),
+    (10000000, 322, 'Зелёная роща'),
+    (4000000, 456, 'Зелёная роща'),
+    (2500000, 24, 'Янтарный берег'),
+    (2000000, 68, 'Зелёная роща'),
+    (1000000, 345, 'Янтарный берег');
+
+
+select * from apartment where Apart_ID = 10;
+
+#endregion
+
+#region agents_Contracts
 
 create table agents_Contracts(
                                  Contract_ID int not null primary key auto_increment,
@@ -25,35 +53,13 @@ VALUES
     ('Иванов Иван Иванович', 5, 'PERCENT', null, 5, '2021-11-10', '2022-11-10'),
     ('Иванов Иван Иванович', 6, 'FIX', 10000, null, '2021-11-10', '2022-11-10');
 
+#endregion
 
 /*Тестовый вариант для проверки связанности таблиц*/
 insert into agents_Contracts (Agent, Apart_ID, Award_Type, FIX_AWARD, PERCENT_AWARD, Conclusion_Date, Expiration_Date)
 VALUES
     ('Петров Григорий Петрович', 10000, 'FIX', 45000, null, '2021-12-10', '2022-12-10');
 
-#endregion
-
-#region apartment
-drop table apartment;
-
-create table apartment(
-    Apart_ID int primary key not null auto_increment,
-    Apart_Cost int not null,
-    Apart_Num int not null,
-    ResComplex varchar(255) not null
-) ENGINE=InnoDB;
-
-insert into apartment (Apart_Cost, Apart_Num, ResComplex)
-values
-    (10000000, 134, 'Зелёная роща'),
-    (5000000, 123, 'Зелёная роща'),
-    (4000000, 19, 'Янтарный берег'),
-    (4000000, 20, 'Янтарный берег');
-
-
-select * from apartment where Apart_ID = 10;
-
-#endregion
 
 create view agents_apartment as
     select agents_Contracts.Contract_ID,
@@ -67,5 +73,3 @@ create view agents_apartment as
            agents_Contracts.Expiration_Date
     from apartment, agents_Contracts
     where apartment.Apart_ID = agents_Contracts.Apart_ID;
-
-drop view agents_apartment;

@@ -1,7 +1,7 @@
 <?php
 require_once 'agent_contract.php';
 
-class AgContractsRepository
+class AgentRepository
 {
     protected $connection = null;
 
@@ -60,5 +60,15 @@ class AgContractsRepository
                 $value['Apart_Cost']
             );
         endforeach;
+    }
+
+    public function getSumPay(): int
+    {
+        $sum = 0;
+
+        foreach ($this->agents as $agent){
+            $sum += $agent->award;
+        }
+        return $sum;
     }
 }

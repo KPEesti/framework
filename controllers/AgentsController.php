@@ -4,16 +4,16 @@ class AgentsController extends BaseController
 {
     public $name ='agents';
 
-    protected $agContractsRepository;
+    protected $AgentRepository;
 
-    public function __construct($agContractsRepository)
+    public function __construct($AgentRepository)
     {
-        $this->agContractsRepository = $agContractsRepository;
+        $this->AgentRepository = $AgentRepository;
     }
 
     public function agentsAction(Request $request)
     {
-        $agents = $this->agContractsRepository->getAllAgContracts();
+        $agents = $this->AgentRepository->getAllAgContracts();
         return new Response($this->render('/AgentsContracts/agents', [
             'Contracts_Agent' => $agents
         ]));
@@ -33,7 +33,7 @@ class AgentsController extends BaseController
             $errors = $agentsValidator->validate($contract);
 
             if(empty($errors)){
-                $this->agContractsRepository->add($contract);
+                $this->AgentRepository->add($contract);
 
                 return new Response(
                     '/agents_Contracts', '301', 'Moved'
@@ -49,9 +49,11 @@ class AgentsController extends BaseController
     public function FindByNameAction($request)
     {
         $agent = $request->getRequestParameter('name');
-        $contracts = $this->agContractsRepository->getAgentsContractByName($agent);
+        $contracts = $this->AgentRepository->getAgentsContractByName($agent);
+        $paySum = $this->AgentRepository->getSumPay();
         return new Response($this->render('/AgentsContracts/agents', [
-            'Contracts_Agent' => $contracts
+            'Contracts_Agent' => $contracts,
+            'Pay_Sum' => $paySum
         ]));
     }
 }
