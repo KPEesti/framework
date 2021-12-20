@@ -39,7 +39,7 @@ class AgentRepository
 
     public function getAgentsContractByName($Agent)
     {
-        $statement = $this->connection->query("select * from agents_apartment where Agent = '$Agent'");
+        $statement = $this->connection->query("select * from agents_apartment where Agent like '%$Agent%'");
         $this->setAgContracts($statement);
         return $this->agents;
     }
@@ -69,6 +69,7 @@ class AgentRepository
         foreach ($this->agents as $agent){
             $sum += $agent->award;
         }
+
         return $sum;
     }
 }
